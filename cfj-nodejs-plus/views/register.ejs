@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>注册</title>
+</head>
+<body class="box">
+  <div class="hei loginBox">
+    <h3>注册我的后台管理系统</h3>
+    <div class="formDiv">
+      <form action="users/register" method="post">
+        <label class="user">
+          <input name="username" type="text" placeholder="请输入用户名">
+          <i class="iconfont"></i>
+        </label>
+        <label class="pwd">
+          <input name="password" type="password" placeholder="请输入密码">
+          <i class="iconfont"></i>
+        </label>
+        <label class="pwd">
+          <input name="repassword" type="password" placeholder="请确认密码">
+          <i class="iconfont"></i>
+        </label>
+        <label class="user">
+          <input name="nickname" type="text" placeholder="请输入昵称">
+          <i class="iconfont"></i>
+        </label>
+        <label class="user">
+          <input name="phone" type="text" placeholder="请输入手机号">
+          <i class="iconfont"></i>
+        </label>
+        <label class="user">
+          <input name="age" type="text" placeholder="请提供您的年龄">
+          <i class="iconfont"></i>
+        </label>
+        <label class="user">
+          <input name="sex" type="text" placeholder="men or lady">
+          <i class="iconfont"></i>
+        </label>
+        <div style="margin-bottom:10px">
+          是否为管理员：<span><input name="isAdmin" value="1" type="radio">yes</span> <span><input name="isAdmin" value="0" type="radio"
+              checked>no</span>
+        </div>
+        <input name="登录" type="submit" class="submit" value="注册">
+      </form>
+    </div>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+</html>

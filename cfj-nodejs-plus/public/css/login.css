@@ -1,0 +1,90 @@
+.box{
+    width: 100%;
+    height: 100%;
+    background:url(/images/bg.jpg);
+    background-size:100%
+}
+#btn{
+    display: none;
+}
+.btn{
+    width: 50px;
+}
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0;}
+body,input,textarea,select,button,table{font-size:12px;line-height:1.25em;outline:none;}
+img,fieldset{border:0;}
+ul,ol{list-style:none;}
+em,address{font-style:normal;}
+a{color:#666;text-decoration:none;}
+a:hover{text-decoration:none!important;}
+table{border-collapse:collapse;}
+h1,h2,h3,h4,h5,h6,em,i{font-style:normal; font-weight:400; outline:none;}
+img{border:none;vertical-align:middle;}
+*{box-sizing: border-box;}
+body {font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;}
+.loginBox h3{
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    font-size: 24px;
+    color: #666;
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.clearfix:after{ content:" "; display:block; height:0; clear:both;}
+.clearfix{ zoom: 1;}
+.Cgreen {color: #58C94A;}
+.Cred {color: #FA7252;}
+.Cyellow {color: #F6B900;}
+/* .Cblue {color: #48C8FF;} */
+.hide {display: none;}
+input::-webkit-input-placeholder{color:#B4B4B4;font-weight: 100;}
+input::-moz-placeholder{color:#B4B4B4;font-weight: 100;}
+input:-moz-placeholder{color:#B4B4B4;font-weight: 100;}
+input:-ms-input-placeholder{color:#B4B4B4;font-weight: 100;}
+.header {height: 138px;}
+.header h1 {font-size: 36px;line-height: 138px;margin-left: 7px;float: left;}
+.header .QRspan {float: right;margin-top: 99px;position: relative;}
+.header .QRspan span {color: #646464;font-size: 16px;}
+.header .QRspan:hover .QRimg {display: inline-block;width: 114px;height: 114px;}
+.header .QRspan .QRimg {position: absolute;top: -97px;right: 0;display: none;}
+  .bg1 {position: absolute;top: 50%;left: -165px;margin-top: -214px;}
+  .loginBox {width: 408px;padding: 40px 50px; background: #ffffff;border-radius: 4px;position: absolute;right: 0;top: 50%;margin-top: -220px;left: 50%;}
+  .hei{width: 408px;padding: 40px 50px; background: #ffffff;border-radius: 4px;position: absolute;right: 0;top: 50%;margin-top: -330px;left: 50%;}
+  .addphone {display: none; width: 408px;padding: 40px 50px; background:#EEEEEE;border-radius: 4px;position: absolute;right: 0;top: 50%;margin-top: -220px;left: 50%;}
+  .userupdate {display: none; width: 408px;padding: 40px 50px; background:#EEEEEE;border-radius: 4px;position: absolute;right: 0;top: 50%;margin-top: -220px;left: 50%;}
+  .addupdate {display: none; width: 408px;padding: 40px 50px; background:#EEEEEE;border-radius: 4px;position: absolute;right: 0;top: 50%;margin-top: -220px;left: 50%;}
+
+  .loginBox .logo {width: 100%;height: 68px;background: url(../img/logoPlus.png) no-repeat;background-size: contain;}
+  .loginBox .formDiv {margin-top: 40px;font-size: 16px;}
+  .loginBox .formDiv input[type=text],
+  .loginBox .formDiv input[type=password] {margin-bottom: 20px;width: 100%; height: 42px;border: 1px solid #E9E9E9;border-radius: 4px;box-shadow: 1px 5px 6px 0px rgba(236,236,236,.5);padding: 5px 5px 5px 40px;font-size: 16px;}
+  .loginBox .formDiv input[type=text]:focus,
+  .loginBox .formDiv input[type=password]:focus {border-color: #58C94A;}
+  .loginBox .formDiv label {position: relative;}
+  .loginBox .formDiv label i.iconfont {color: #D4DEE7;font-size: 18px;position: absolute;top: 3px;left: 15px;}
+  .loginBox .formDiv input[type=text]:focus+i.iconfont,
+  .loginBox .formDiv input[type=password]:focus+i.iconfont {color: #58C94A;}
+  .loginBox .formDiv .pwdOper {font-weight: 300;margin-bottom: 30px;}
+  .loginBox .formDiv .pwdOper .remember {color: #646464;}
+  .loginBox .formDiv .pwdOper .remember input[type=checkbox]:checked+.checkbox:before {font-family: iconfont;content: '\e732';color: #F6B900;font-size: 18px;}
+  .loginBox .formDiv .pwdOper .remember .checkbox {display: inline-block;width: 18px;height: 18px;border: 1px solid #F6B900;border-radius: 2px;vertical-align: bottom;margin-right: 5px;}
+  .loginBox .formDiv .pwdOper .forget {float: right;}
+  .loginBox .formDiv input[type=submit] {display: inline-block;height: 42px;line-height: 42px;width: 100%;color: #FFFFFF;border: 1px solid #58C94A;background: #58C94A; border-radius: 4px;text-align: center;}
+  .loginBox .formDiv input[type=submit]:hover {background: #69d25b;}
+  .loginBox .formDiv input[type=submit]:active {background: #61c554;}
+  .loginBox .formDiv .bbt{display: block; height: 42px;width: 308px; background:red;margin-top: 10px;text-align: center;line-height: 42px;}
+  .loginBox .formDiv button a{color: #666;}
+  #sel{
+      height: 42px;
+      margin-bottom: 20px;
+  }
+  .mobile{
+      height: 42px;
+      /* margin-bottom: 20px; */
+  }

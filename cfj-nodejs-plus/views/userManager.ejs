@@ -1,0 +1,133 @@
+<!-- //=============== 用户管理开始=============== -->
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/login.css">
+<fieldset class="layui-elem-field">
+    <legend>用户管理</legend>
+    <div class="layui-field-box">
+      <form method="GET" action="userManager.html">
+        <input type="text" name="username" placeholder="输入用户昵称">
+        <input type="submit" value="搜索">
+      </form>
+        <table class="layui-table" border=" 1px solid #E2E2E2;">
+            <thead>
+                <tr>
+                    <thead>
+                      <tr>
+                        <th>序号</th>
+                        <th>用户名</th>
+                        <th>用户昵称</th>
+                        <th>手机号码</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>是否管理员</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(userList.length){ %>
+                <% for (var i = 0; i < userList.length; i++) { %>
+                  <tr>
+                    <td><%= userList[i]._id %></td>
+                    <td><%= userList[i].username %></td>
+                    <td><%= userList[i].nickname %></td>
+                    <td><%= userList[i].phone %></td>
+                    <td><%= userList[i].sex || '-' %></td>
+                    <td><%= userList[i].age || '-' %></td>
+                    <td><%= parseInt(userList[i].is_admin) ? '是' : '否' %></td>
+                    <td>
+                      <% if (userList[i].username === username) { %>
+                        <a class="updata">修改</a>
+                      <% } else if (parseInt(userList[i].is_admin)) { %>
+
+                      <% } else { %>
+                        <a class="updata">修改
+                          <!-- //=============== 用户修改界面=============== -->
+                          <div class="userupdate loginBox">
+                            <h3>修改界面</h3>
+                            <div class="formDiv">
+                              <form action="/updata" method="post">
+                                <input value="<%= userList[i]._id %>" name="_id" hidden/>
+                                <label class="user">
+                                  <input name="username" type="text" placeholder="请输入用户名">
+                                  <i class="iconfont"></i>
+                                </label>
+                                <label class="user">
+                                  <input name="nickname" type="text" placeholder="请输入昵称">
+                                  <i class="iconfont"></i>
+                                </label>
+                                <label class="user">
+                                  <input name="phone" type="text" placeholder="请输入手机号">
+                                  <i class="iconfont"></i>
+                                </label>
+                                <label class="user">
+                                  <input name="age" type="text" placeholder="您的年龄">
+                                  <i class="iconfont"></i>
+                                </label>
+                                <label class="user">
+                                  <input name="sex" type="text" placeholder="men or lady">
+                                  <i class="iconfont"></i>
+                                </label>
+                                <input name="修改" type="submit" class="submit" value="修改">
+                              </form>
+                            </div>
+                          </div>
+
+                          <!-- //=============== 用户修改结束=============== -->
+                        </a>
+                        <a href="/delete?id=<%= userList[i]._id %>" class="delete">删除</a>
+                      <% } %>
+
+                    </td>
+                  </tr>
+                <% } %>
+              <% }else{ %>
+                  <tr>
+                    <td>1</td>
+                    <td><%= userList.username %></td>
+                    <td><%= userList.nickname %></td>
+                    <td><%= userList.phone %></td>
+                    <td><%= userList.sex || '-' %></td>
+                    <td><%= userList.age || '-' %></td>
+                    <td><%= parseInt(userList.is_admin) ? '是' : '否' %></td>
+                    <td>
+                      <% if (userList.username === username) { %>
+                        <a class="updata">修改</a>
+                      <% } else if (parseInt(userList.is_admin)) { %>
+
+                      <% } else { %>
+                        <a class="updata">修改</a>
+                        <a href="/delete?id=<% userList._id %>" class="delete">删除</a>
+                      <% } %>
+
+                    </td>
+                  </tr>
+              <% } %>
+            </tbody>
+        </table>
+        <ul>
+          <% if(totalPage != ''){ %>
+            <% for (var i = 0; i < totalPage; i++) { %>
+              <li><a href="/userManger.html?page=<%= i+1 %>" ><%= i+1 %>页</a></li>
+            <% } %>
+          <% }else{ %>
+              <a href="/userManager.html">显示全部</a>
+          <% } %>
+        </ul>
+    </div>
+</fieldset>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  document.onclick = function (e) {
+    var e = e || event;
+    var target = e.target || e.srcElement;
+    if (target.className == "updata") {
+      if ($(target).find('.userupdate')) {
+          $(target).find('.userupdate').show(1000);
+        } else {
+          alert("aaa");
+        }
+    };
+  };
+</script>

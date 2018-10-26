@@ -1,0 +1,154 @@
+<!-- //=============== 手机管理开始=============== -->
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/login.css">
+<fieldset class="layui-elem-field">
+    <legend>手机管理</legend>
+    <div class="layui-field-box">
+        <form method="GET" action="javascript: ;">
+            <input class="add" type="submit" value="新增手机">
+        </form>
+        <table class="layui-table" border=" 1px solid #E2E2E2;">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>图片</th>
+                    <th>手机名称</th>
+                    <th>所属品牌</th>
+                    <th>官方指导价</th>
+                    <th>二手回收价</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(phoneList.length){ %>
+                <% for (var i = 0; i < phoneList.length; i++) { %>
+                <tr>
+                    <td><%= phoneList[i]._id %></td>
+                    <td><img src="<%= phoneList[i].src %>"></td>
+                    <td><%= phoneList[i].phonename %> </td>
+                    <td><%= phoneList[i].brand %></td>
+                    <td><%= phoneList[i].price || '-' %></td>
+                    <td><%= phoneList[i].secondprice || '-' %></td>
+                    <td>
+                        <a class="updata">修改
+                            <!-- //=============== 手机修改开始=============== -->
+                            <div class="loginBox userupdate">
+                                <h3>修改手机</h3>
+                                <div class="formDiv">
+                                    <form action="/phone/update" method="post" enctype="multipart/form-data">
+                                        <label class="user">
+                                            <input name="phonename" type="text" placeholder="请输入手机名称">
+                                            <i class="iconfont"></i>
+                                        </label>
+                                        <input value="<%= phoneList[i]._id %>" name="_id" hidden />
+                                        <select class="choose" name="brand">
+                                            
+
+                                        </select>
+
+                                        <label class="pwd">
+                                            <input name="price" type="text" placeholder="请输入官方指导价">
+                                            <i class="iconfont"></i>
+                                        </label>
+                                        <label class="pwd">
+                                            <input name="secondprice" type="text" placeholder="请输入二手回收价">
+                                            <i class="iconfont"></i>
+                                        </label>
+                                        <input type="file" name="mobileupdate" class="mobile">
+                                        <input name="提交" type="submit" class="submit" value="提交">
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- //=============== 手机修改结束=============== -->
+                        </a>
+                        <a href="/phone/delete?id=<%= phoneList[i]._id %>">删除</a>
+                    </td>
+                </tr> 
+                <% } %>
+                <% }else{ %>
+                <tr>
+                    <td><% 1 %></td>
+                    <td><%= userList.username %></td>
+                    <td><%= userList.nickname %></td>
+                    <td><%= userList.phone %></td>
+                    <td><%= userList.sex || '-' %></td>
+                    <td><%= userList.age || '-' %></td>
+                    <td>
+                        <a class="updata">修改 </a>
+                        <a href="/phone/delete?id=<%= phoneList[i]._id %>" class="delete">删除</a>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <ul>
+            <% if(totalPage != ''){ %>
+            <% for (var i = 0; i < totalPage; i++) { %>
+            <li><a href="/userManger.html?page=<%= i+1 %>"><%= i+1 %>页</a></li>
+            <% } %>
+            <% }else{ %><a href="/userManager.html">显示全部</a>
+            <% } %>
+        </ul>
+    </div>
+    <!-- //=============== 手机添加=============== -->
+    <div class="loginBox addphone">
+        <h3>新增手机</h3>
+        <div class="formDiv">
+            <form action="/phone/add" method="post" enctype="multipart/form-data">
+                <label class="user">
+                    <input name="phonename" type="text" placeholder="请输入手机名称">
+                    <i class="iconfont"></i>
+                </label>
+                <select class="choose" name="brand">
+
+                    <!-- <option value="iphone">iphone</option> -->
+                </select>
+                <label class="pwd">
+                    <input name="price" type="text" placeholder="请输入官方指导价">
+                    <i class="iconfont"></i>
+                </label>
+                <label class="pwd">
+                    <input name="secondprice" type="text" placeholder="请输入二手回收价">
+                    <i class="iconfont"></i>
+                </label>
+                <input type="file" name="mobile" class="mobile">
+                <input name="提交" type="submit" class="submit" value="提交">
+            </form>
+        </div>
+    </div>
+    <!-- //=============== 手机添加结束=============== -->
+</fieldset>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+     document.onclick = function (e) {
+        var e = e || event;
+        var target = e.target || e.srcElement;
+        if (target.className == "add") {
+            $('.addphone').show(1000);
+        };
+        if (target.className == "updata") {
+            if ($(target).find('.userupdate')) {
+                // alert("555");
+                $(target).find('.userupdate').show(100);
+            } else {
+                alert("aaa");
+            }
+        }
+    };
+    //把品牌渲染到下拉列表
+        $.post('/phone/findBrand', function (res) {
+            console.log(res);
+            var brandStr = '';
+            var arr = [];
+            for (var i = 0; i < res.length; i++) {
+                if (arr.indexOf(res[i].brandname) == -1) {
+                    arr.push(res[i].brandname);
+                    brandStr += `<option>${res[i].brandname}</option> `
+                }
+
+            }
+            $('.choose').html(brandStr);
+        });
+
+</script>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>后台系统管理</title>
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"> -->
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+  <!-- 顶部开始 -->
+  <div class="container">
+    <div class="logo"><a href="">后台管理系统</a></div>
+    <div class="left_open">关闭选项卡</div>
+
+    <ul class="layui-nav right">
+      <li class="layui-nav-item">欢迎您- <%= nickname %> -<%= isAdmin %> </li>
+      <li class="layui-nav-item next"><a href="/users/logout">退出登录</a></li>
+    </ul>
+  </div>
+  <!-- 顶部结束 -->
+
+
+  <!-- //=============== 左侧选菜单栏开始=============== -->
+  <div class="left-nav">
+    <div id="side-nav">
+      <ul id="nav">
+        <% if (isAdmin) { %>
+        <li id="/userManager.html">
+          用户管理
+          <!-- <a href="/userManager.html" class="hov">用户管理</a> -->
+        </li>
+        <% } %>
+        <li class="on" id="phone/mobileManager.html">
+          手机管理
+          <!-- <a href="phone/mobileManager.html">手机管理</a> -->
+        </li>
+        <li id="/brand">
+          品牌管理
+          <!-- <a href="/brand">品牌管理</a> -->
+        </li>
+      </ul>
+    </div>
+  </div>
+ <!-- //=============== 左侧管理结束=============== -->
+
+
+
+  <!-- //=============== 主体内容开始=============== -->
+  <div class="page-content">
+    <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+      <ul class="layui-tab-title">
+        <!-- <li>我的桌面<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li> -->
+      </ul>
+      <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+          <iframe src="phone/mobileManager.html" frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //=============== 主体内容结束=============== -->
+
+
+  <div class="page-content-bg"></div>
+  <div class="footer">
+    <div class="copyright">Copyright ©2017 All Rights Reserved</div>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    document.onclick = function (e) {
+        // alert("aaa");
+        var e = e || event;
+        var target = e.target || e.srcElement;
+        if (target.className == "left_open") {
+          if ($('.left-nav').css('left') == '0px') {
+              $('.left_open').html('打开选项卡');
+              $('.left-nav').animate({ left: '-221px' }, 100);
+              $('.page-content').animate({ left: '0px' }, 100);
+              $('.page-content-bg').hide();
+            } else {
+              $('.left-nav').animate({ left: '0px' }, 100);
+              $('.page-content').animate({ left: '221px' }, 100);
+              $('.left_open').html('关闭选项卡');
+              if ($(window).width() < 768) {
+                $('.page-content-bg').show();
+              }
+            }
+        };
+        if (target.className == "add") {
+          // alert("aaa");
+          $("#btn").show(1000);
+        };
+        if (target.className == "updata") {
+          // alert("aaa");
+          $("#updata").show(1000);
+        };
+        if (target.nodeName.toLowerCase() =='li') {
+          $(target).addClass("on").siblings().removeClass("on");
+          $src = $(target).attr('id')
+          $('iframe').attr('src',$src);
+        }
+      };
+
+</script>
+</html>

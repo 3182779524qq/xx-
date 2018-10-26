@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <div class="index">
+        <!-- <%- include('./common/header.ejs', { nickname: nickname, isAdmin: isAdmin }) %> -->
+        <div class="container">
+            <!-- <%- include('./common/left.ejs', { isAdmin: isAdmin }) %> -->
+            <!-- //=============== 这是手机管理开始=============== -->
+            <div class="main">
+                <form method="GET" action="">
+                    <input type="submit" value="新增手机">
+                </form>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>图片</th>
+                            <th>手机名称</th>
+                            <th>所属品牌</th>
+                            <th>官方指导价</th>
+                            <th>二手回收价</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 循环 phoneList 显示用户数据 -->
+                        <!-- <% if(phoneList.length){ %>
+                        <% for (var i = 0; i < phoneList.length; i++) { %>
+                        <tr>
+                            <td>
+                                <%= phoneList[i]._id %>
+                            </td>
+                            <td>
+                                <%= phoneList[i].src %>
+                            </td>
+                            <td>
+                                <%= phoneList[i].phonename %>
+                            </td>
+                            <td>
+                                <%= phoneList[i].brand %>
+                            </td>
+                            <td>
+                                <%= phoneList[i].price || '-' %>
+                            </td>
+                            <td>
+                                <%= phoneList[i].secondprice || '-' %>
+                            </td>
+                            <td>
+                                <a href="#">修改</a>
+                                <a href="#">删除</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                        <% } %> -->
+                    </tbody>
+                </table>
+                <!-- 通过 传过来  totalPage 来渲染我们的 分页组件 -->
+                <ul>
+                    <!-- <% if(totalPage != ''){ %> -->
+                    <!-- <% for (var i = 0; i < totalPage; i++) { %> -->
+                    <li>
+                        <a href="/mobileManager?page=<%= i+1 %>">
+                            <!-- <%= i+1 %>页</a> -->
+                    </li>
+                    <!-- <% } %> -->
+                </ul>
+            </div>
+            <!-- //=============== 手机添加开始=============== -->
+            <div class="zhuce_body" id="btn">
+                <div class="zhuce_kong">
+                    <div class="zc">
+                        <div class="bj_bai">
+                            <h3>新增手机</h3>
+                            <form action="/updata?id=<%= phoneList[i]._id %>" method="POST">
+                                <input name="username" type="text" class="kuang_txt phone" placeholder="用户名">
+                                <input name="password" type="password" class="kuang_txt email" placeholder="密码">
+                                <input name="repassword" type="password" class="kuang_txt possword" placeholder="确认密码">
+                                <input name="nickname" type="text" class="kuang_txt possword" placeholder="昵称">
+                                <input name="phone" type="text" class="kuang_txt yanzm" placeholder="手机号">
+                                <input name="注册" type="submit" class="btn_zhuce" value="提交">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //=============== 这是手机添加结束=============== -->
+            <!-- //=============== 这是手机管理结束=============== -->
+        </div>
+    </div>
+
+</body>
+
+</html>
